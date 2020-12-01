@@ -6,23 +6,17 @@
 /*   By: selee <selee@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/26 12:06:15 by selee             #+#    #+#             */
-/*   Updated: 2020/11/26 18:17:17 by selee            ###   ########lyon.fr   */
+/*   Updated: 2020/12/01 12:05:49 by selee            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdio.h>
 
-int		ft_isalnum (int c)
+int		ft_isalnum(int c)
 {
-	if ((c >= 'A' && c <= 'Z') || (c >= 'a'  && c <= 'z') || (c >= '0' && c <= '9'))
+	if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z')
+				|| (c >= '0' && c <= '9'))
 		return (1);
-	return (0);
-}
-
-
-int		main(void)
-{
-	ft_isalnum('A');
 	return (0);
 }

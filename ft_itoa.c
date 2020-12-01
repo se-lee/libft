@@ -1,20 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_toupper.c                                       :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: selee <selee@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/26 13:01:19 by selee             #+#    #+#             */
-/*   Updated: 2020/12/01 12:06:46 by selee            ###   ########lyon.fr   */
+/*   Created: 2020/12/01 16:13:40 by selee             #+#    #+#             */
+/*   Updated: 2020/12/01 17:02:26 by selee            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_toupper(int c)
+char	*ft_itoa(int n)
 {
-	if (c >= 'a' && c <= 'z')
-		return (c - 32);
-	return (c);
+	int		i;
+	int		sign;
+	char	*str;
+	int		len;
+
+	i = 0;
+	sign = 1;
+	while (n && (n >= 0 && n <= 9))
+	{
+		str[i] = n % 10 + '0';
+		i++;
+	}
+	return (*str);
 }
