@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: selee <selee@student.42lyon.fr>            +#+  +:+       +#+        */
+/*   By: seoyounglee <seoyounglee@student.42lyon    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/27 11:37:26 by seoyounglee       #+#    #+#             */
-/*   Updated: 2020/12/01 14:25:24 by selee            ###   ########lyon.fr   */
+/*   Updated: 2020/12/02 22:34:13 by seoyounglee      ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,21 @@
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char	*ptr;
+	char	*dest;
 	size_t	i;
-	size_t	len;
-	size_t	len2;
+	size_t	total_len;
 
-	i = 0;
-	len = ft_strlen((char *)s1);
-	len2 = ft_strlen((char *)s2);
-	if (!(ptr = (char *)malloc((sizeof(char) * (len + len2)))))
+	total_len = (ft_strlen((char *)s1)) + (ft_strlen((char *)s2)) + 1;
+	dest = (char *)malloc(sizeof(char) * total_len);
+	if (!dest)
 		return (NULL);
-	while (s1)
-	{
-		ptr[i] = s1[i];
-		i++;
-	}
 	i = 0;
-	while (s2)
-	{
-		ptr[len] = s2[i];
-		len++;
-		i++;
-	}
-	ptr[len] = '\0';
-	return (ptr);
+	total_len = 0;
+	while (s1[i])
+		dest[total_len++] = s1[i++];
+	i = 0;
+	while (s2[i])
+		dest[total_len++] = s2[i++];
+	dest[total_len] = '\0';
+	return (dest);
 }

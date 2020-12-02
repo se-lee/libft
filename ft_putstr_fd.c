@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: selee <selee@student.42lyon.fr>            +#+  +:+       +#+        */
+/*   By: seoyounglee <seoyounglee@student.42lyon    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/01 15:46:56 by selee             #+#    #+#             */
-/*   Updated: 2020/12/01 15:46:59 by selee            ###   ########lyon.fr   */
+/*   Created: 2020/11/27 19:55:31 by seoyounglee       #+#    #+#             */
+/*   Updated: 2020/12/02 22:34:15 by seoyounglee      ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <unistd.h>
+//libft.h 
 
 void	ft_putstr_fd(char *s, int fd)
 {
@@ -25,4 +26,11 @@ void	ft_putstr_fd(char *s, int fd)
 			i++;
 		}
 	}
+}
+
+int	main()
+{
+	char s[] = "Hello Joojin";
+	ft_putstr_fd(s, 1);
+	return 0;
 }
