@@ -3,34 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seoyounglee <seoyounglee@student.42lyon    +#+  +:+       +#+        */
+/*   By: selee <selee@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/27 19:55:31 by seoyounglee       #+#    #+#             */
-/*   Updated: 2020/12/02 22:34:15 by seoyounglee      ###   ########lyon.fr   */
+/*   Created: 2020/12/01 15:46:56 by selee             #+#    #+#             */
+/*   Updated: 2020/12/08 14:44:41 by selee            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-//libft.h 
+#include "libft.h"
 
 void	ft_putstr_fd(char *s, int fd)
 {
 	int	i;
 
 	i = 0;
-	if (fd > 0)
+	if (!s)
+		return ;
+	while (s[i] && fd > 0)
 	{
-		while (s[i])
-		{
-			write(fd, &s[i], 1);
-			i++;
-		}
+		write(fd, &s[i], 1);
+		i++;
 	}
-}
-
-int	main()
-{
-	char s[] = "Hello Joojin";
-	ft_putstr_fd(s, 1);
-	return 0;
 }

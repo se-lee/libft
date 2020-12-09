@@ -6,7 +6,7 @@
 /*   By: selee <selee@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/25 11:41:01 by selee             #+#    #+#             */
-/*   Updated: 2020/12/01 14:16:12 by selee            ###   ########lyon.fr   */
+/*   Updated: 2020/12/07 16:53:38 by selee            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,17 @@ size_t	ft_strlcpy(char *restrict dst,
 {
 	size_t	i;
 
-	i = 0;
 	if (!dst || !src)
 		return (0);
-	while (src[i])
-		i++;
-	if (destsize == 0)
-		return (i);
-	while (src[i] && i + 1 < destsize)
+	if (destsize > 0)
 	{
-		dst[i] = src[i];
-		i++;
+		i = 0;
+		while (src[i] && i < destsize - 1)
+		{
+			dst[i] = src[i];
+			i++;
+		}
+		dst[i] = '\0';
 	}
-	dst[i] = '\0';
-	return (i);
+	return (ft_strlen(src));
 }

@@ -6,7 +6,7 @@
 /*   By: selee <selee@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 14:54:49 by selee             #+#    #+#             */
-/*   Updated: 2020/12/01 15:35:10 by selee            ###   ########lyon.fr   */
+/*   Updated: 2020/12/08 14:44:22 by selee            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	ft_putendl_fd(char *s, int fd)
 	int	i;
 
 	i = 0;
+	if (!s)
+		return ;
 	if (fd > 0)
 	{
 		while (s[i])

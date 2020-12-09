@@ -6,7 +6,7 @@
 /*   By: selee <selee@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/24 10:27:16 by selee             #+#    #+#             */
-/*   Updated: 2020/12/01 13:49:13 by selee            ###   ########lyon.fr   */
+/*   Updated: 2020/12/03 15:18:17 by selee            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,24 @@
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	char	*dest;
-	char	*source;
 	size_t	i;
 
-	dest = (char *)dst;
-	source = (char *)src;
 	i = 0;
-	if (src > dst)
+	if (!src && !dst)
+		return (0);
+	if (src < dst)
 	{
-		i = len;
-		while (i-- > 0)
-			dest[i] = source[i];
+		while (len > 0)
+		{
+			((char *)dst)[len - 1] = ((char *)src)[len - 1];
+			len--;
+		}
 	}
 	else
 	{
-		i = 0;
 		while (i < len)
 		{
-			dest[i] = source[i];
+			((char *)dst)[i] = ((char *)src)[i];
 			i++;
 		}
 	}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seoyounglee <seoyounglee@student.42lyon    +#+  +:+       +#+        */
+/*   By: selee <selee@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/25 15:53:11 by selee             #+#    #+#             */
-/*   Updated: 2020/12/02 22:34:10 by seoyounglee      ###   ########lyon.fr   */
+/*   Updated: 2020/12/03 15:38:30 by selee            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,7 @@ char	*ft_strchr(const char *s, int c)
 			return (ptr);
 		ptr++;
 	}
+	if (c == '\0' && ptr[i] == '\0')
+		return (ptr);
 	return (NULL);
 }
