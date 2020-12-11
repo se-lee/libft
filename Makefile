@@ -11,11 +11,13 @@ SRCS	= ft_bzero.c ft_calloc.c ft_isalnum.c\
 		  ft_itoa.c ft_strtrim.c ft_strmapi.c\
 		  ft_split.c
 
-BONUS = 
+BONUS	= ft_lstnew.c ft_lstadd_front.c ft_lstlast.c ft_lstsize.c ft_lstadd_back.c\
+		ft_lstdelone.c ft_lstclear.c ft_lstiter.c
+		
 
 OBJS	= ${SRCS:.c=.o}
-OBJSBONUS = ${BONUS:.c=.o}
 
+BONUS_OBJS = ${BONUS:.c=.o}
 
 NAME	= libft.a
 
@@ -33,11 +35,14 @@ ${NAME}:	${OBJS}
 all:		${NAME}
 
 clean:
-			${RM} ${OBJS}
+			${RM} ${OBJS} ${BONUS_OBJS}
 
 fclean:		clean
 			${RM} ${NAME}
 
 re:			fclean all
 
-PHONY: all clean fclean are
+bonus:		$(OBJS) $(BONUS_OBJS)
+			ar rcs $(NAME) $(OBJS) $(BONUS_OBJS)
+
+PHONY: all clean fclean are bonus

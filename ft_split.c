@@ -6,13 +6,11 @@
 /*   By: selee <selee@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 09:15:04 by selee             #+#    #+#             */
-/*   Updated: 2020/12/09 19:55:24 by selee            ###   ########lyon.fr   */
+/*   Updated: 2020/12/11 17:54:51 by selee            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
-#include <stdbool.h>
 
 static int		count_words(const char *text, char sep)
 {
@@ -42,56 +40,76 @@ static int		count_words(const char *text, char sep)
 	return (count);
 }
 
-static int		word_lenght(char const *string, char end)
+static char		*read_word(const char **string, char sep)
 {
-	int		len;
+	char		*result;
+	int			len;
+	const char	*cursor;
 
 	len = 0;
-	while (string[len] != '\0' && string[len] != end)
+	cursor = *string;
+	while (*cursor != '\0' && *cursor != sep)
+	{
+		cursor++;
 		len += 1;
-	return (len);
-}
-
-static char		*get_word(const char *string, char sep)
-{
-	char	*result;
-	int		len;
-
-	len = word_lenght(string, sep);
+	}
 	result = malloc((len + 1) * sizeof(char));
 	if (!result)
 		return (NULL);
-	ft_memcpy(result, string, len);
+	ft_memcpy(result, *string, len);
 	result[len] = '\0';
+	*string = cursor;
 	return (result);
+}
+
+static void		skip_separtors(const char **string, char sep)
+{
+	const char	*cursor;
+
+	cursor = *string;
+	while (*cursor == sep)
+		cursor++;
+	*string = cursor;
+}
+
+static void		cleanup(char **words, int up_to)
+{
+	int		word_index;
+
+	word_index = 0;
+	while (word_index < up_to)
+	{
+		free(words[word_index]);
+		word_index += 1;
+	}
+	free(words);
 }
 
 char			**ft_split(const char *string, char sep)
 {
-	char	**words;
-	int		word_index;
-	int		index;
-	bool	in_a_word;
+	char		**words;
+	int			word_index;
+	int			word_count;
+	char		*new_word;
+	const char	*cursor;
 
-	if (!(words = malloc((count_words(string, sep) + 1) * sizeof(char*))))
+	word_count = count_words(string, sep);
+	words = malloc((word_count + 1) * sizeof(char*));
+	if (!words)
 		return (NULL);
-	index = 0;
 	word_index = 0;
-	in_a_word = false;
-	while (string[index] != '\0')
+	cursor = &string[0];
+	while (word_index < word_count)
 	{
-		if (in_a_word)
+		skip_separtors(&cursor, sep);
+		if (!(new_word = read_word(&cursor, sep)))
 		{
-			if (string[index] == sep)
-				in_a_word = false;
+			cleanup(words, word_index);
+			return (NULL);
 		}
-		else if (string[index] != sep)
-		{
-			in_a_word = true;
-			words[word_index++] = get_word(&string[index], sep);
-		}
-		index += 1;
+		words[word_index] = new_word;
+		word_index++;
 	}
-	words[count_words(string, sep)] = NULL;
+	words[word_index] = NULL;
 	return (words);
 }

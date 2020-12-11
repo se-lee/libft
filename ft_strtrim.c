@@ -6,50 +6,52 @@
 /*   By: selee <selee@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/30 13:53:31 by selee             #+#    #+#             */
-/*   Updated: 2020/12/07 16:56:19 by selee            ###   ########lyon.fr   */
+/*   Updated: 2020/12/11 15:57:55 by selee            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_is_in_set(char c, char const *set)
+static int	ft_is_in_set(char chr, char const *set)
 {
-	size_t	i;
+	size_t	index;
 
-	i = 0;
-	if (!set || !c)
+	index = 0;
+	if (!set || !chr)
 		return (0);
-	while (set[i])
+	while (set[index])
 	{
-		if (c == set[i])
+		if (chr == set[index])
 			return (1);
-		i++;
+		index++;
 	}
 	return (0);
 }
 
 char		*ft_strtrim(char const *s1, char const *set)
 {
-	char	*str;
-	size_t	i;
+	char	*new_str;
+	size_t	index;
 	size_t	len;
 	size_t	j;
+	size_t	new_index;
 
-	i = 0;
-	j = 0;
+	index = 0;
+	new_index = 0;
 	len = ft_strlen(s1);
+	j = len;
 	if (!s1 || !set)
-		return (0);
-	while (s1 && ft_is_in_set(s1[i], set))
-		i++;
-	while (s1 && ft_is_in_set(s1[len - 1], set))
-		len--;
-	if (i >= len)
-		return ("");
-	if (!(str = (char *)malloc(sizeof(char) * (len - i + 1))))
 		return (NULL);
-	while (i < len)
-		str[j++] = s1[i++];
-	str[j] = '\0';
-	return (str);
+	while (s1 && ft_is_in_set(s1[index], set))
+		index++;
+	while (s1 && ft_is_in_set(s1[j - 1], set))
+		j--;
+	if (j > index)
+		len = j;
+	if (!(new_str = (char *)malloc(sizeof(char) * (len - index + 1))))
+		return (NULL);
+	while (index < j)
+		new_str[new_index++] = s1[index++];
+	new_str[new_index] = '\0';
+	return (new_str);
 }
