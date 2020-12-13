@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: selee <selee@student.42lyon.fr>            +#+  +:+       +#+        */
+/*   By: seoyounglee <seoyounglee@student.42lyon    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/11 19:50:27 by selee             #+#    #+#             */
-/*   Updated: 2020/12/11 19:51:25 by selee            ###   ########lyon.fr   */
+/*   Updated: 2020/12/13 22:04:03 by seoyounglee      ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,11 @@
 
 void ft_lstiter(t_list *lst, void (*f)(void *))
 {
-
+	if (!lst || !f)
+		return ;
+	while (lst != NULL)
+	{
+		f((*lst).content);
+		lst = (*lst).next;
+	}
 }

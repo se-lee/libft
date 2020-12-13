@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: selee <selee@student.42lyon.fr>            +#+  +:+       +#+        */
+/*   By: seoyounglee <seoyounglee@student.42lyon    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/11 18:10:15 by selee             #+#    #+#             */
-/*   Updated: 2020/12/11 19:02:44 by selee            ###   ########lyon.fr   */
+/*   Updated: 2020/12/13 22:23:29 by seoyounglee      ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	t_list	*last;
+	t_list	*last_element;
 
 	if (lst == NULL || new == NULL)
 		return ;
@@ -23,7 +23,6 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 		*lst = new;
 		return ;
 	}
-	last = ft_lstlast(*lst);
-	(*new).next = (*last).next; //(*last).next == NULL;
-	(*last).next = new;
+	last_element = ft_lstlast(*lst);
+	(*last_element).next = new;
 }
