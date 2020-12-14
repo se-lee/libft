@@ -6,7 +6,7 @@
 #    By: selee <selee@student.42lyon.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/14 13:48:53 by selee             #+#    #+#              #
-#    Updated: 2020/12/14 14:46:54 by selee            ###   ########lyon.fr    #
+#    Updated: 2020/12/14 19:27:02 by selee            ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,36 +27,33 @@ BONUS	= ft_lstnew.c ft_lstadd_front.c ft_lstlast.c ft_lstsize.c\
 		ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c\
 		ft_lstiter.c ft_lstmap.c
 
-OBJS	= ${SRCS:.c=.o}
+OBJS	= $(SRCS:.c=.o)
 
-BONUS_OBJS = ${BONUS:.c=.o}
+BONUS_OBJS = $(BONUS:.c=.o)
 
 NAME	= libft.a
 
-CC		= gcc
-RM		= rm -rf
-
 CFLAGS	= -Wall -Wextra -Werror
 
-.c.o: libft.h	
-	${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
+.c.o: libft.
+	$(CC) $(CFLAGS) -c $< -o $@
 
-${NAME}:	${OBJS}
-			ar rc ${NAME} ${OBJS}
-			ranlib $(NAME)
+$(NAME): $(OBJS)
+	$(AR) rcs $(NAME) $(OBJS)
 
-
-all:		${NAME}
+all: $(NAME)
 
 clean:
-			${RM} ${OBJS} ${BONUS_OBJS}
+	$(RM) $(OBJS) $(BONUS_OBJS)
 
-fclean:		clean
-			${RM} ${NAME}
+fclean: clean
+	$(RM) $(NAME)
 
-re:			fclean all
+re:
+	$(MAKE) fclean
+	$(MAKE) all
 
-bonus:		$(OBJS) $(BONUS_OBJS)
-			ar rc $(NAME) $(OBJS) $(BONUS_OBJS)
+bonus: $(OBJS) $(BONUS_OBJS)
+	$(AR) rcs $(NAME) $(OBJS) $(BONUS_OBJS)
 
-PHONY: all clean fclean are bonus
+.PHONY: all clean fclean bonus
