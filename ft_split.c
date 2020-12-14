@@ -6,25 +6,27 @@
 /*   By: selee <selee@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 09:15:04 by selee             #+#    #+#             */
-/*   Updated: 2020/12/11 17:54:51 by selee            ###   ########lyon.fr   */
+/*   Updated: 2020/12/14 16:05:54 by selee            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int		count_words(const char *text, char sep)
+static int		ft_count_words(const char *string, char sep)
 {
 	int		count;
 	int		index;
 	bool	in_a_word;
 	char	c;
 
+	if (string == 0)
+		return (0);
 	index = 0;
 	count = 0;
 	in_a_word = false;
-	while (text[index] != '\0')
+	while (string[++index] != '\0')
 	{
-		c = text[index];
+		c = string[index];
 		if (in_a_word)
 		{
 			if (c == sep)
@@ -33,14 +35,13 @@ static int		count_words(const char *text, char sep)
 		else if (c != sep)
 		{
 			in_a_word = true;
-			count += 1;
+			count++;
 		}
-		index += 1;
 	}
 	return (count);
 }
 
-static char		*read_word(const char **string, char sep)
+static char		*ft_read_word(const char **string, char sep)
 {
 	char		*result;
 	int			len;
@@ -62,7 +63,7 @@ static char		*read_word(const char **string, char sep)
 	return (result);
 }
 
-static void		skip_separtors(const char **string, char sep)
+static void		ft_skip_separators(const char **string, char sep)
 {
 	const char	*cursor;
 
@@ -72,7 +73,7 @@ static void		skip_separtors(const char **string, char sep)
 	*string = cursor;
 }
 
-static void		cleanup(char **words, int up_to)
+static void		ft_cleanup(char **words, int up_to)
 {
 	int		word_index;
 
@@ -93,18 +94,17 @@ char			**ft_split(const char *string, char sep)
 	char		*new_word;
 	const char	*cursor;
 
-	word_count = count_words(string, sep);
-	words = malloc((word_count + 1) * sizeof(char*));
-	if (!words)
+	word_count = ft_count_words(string, sep);
+	if (!(words = malloc((word_count + 1) * sizeof(char*))))
 		return (NULL);
 	word_index = 0;
 	cursor = &string[0];
 	while (word_index < word_count)
 	{
-		skip_separtors(&cursor, sep);
-		if (!(new_word = read_word(&cursor, sep)))
+		ft_skip_separators(&cursor, sep);
+		if (!(new_word = ft_read_word(&cursor, sep)))
 		{
-			cleanup(words, word_index);
+			ft_cleanup(words, word_index);
 			return (NULL);
 		}
 		words[word_index] = new_word;

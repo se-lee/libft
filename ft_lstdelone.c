@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seoyounglee <seoyounglee@student.42lyon    +#+  +:+       +#+        */
+/*   By: selee <selee@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/11 19:03:07 by selee             #+#    #+#             */
-/*   Updated: 2020/12/13 19:23:40 by seoyounglee      ###   ########lyon.fr   */
+/*   Updated: 2020/12/14 10:23:22 by selee            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 

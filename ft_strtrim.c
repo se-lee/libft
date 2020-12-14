@@ -6,7 +6,7 @@
 /*   By: selee <selee@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/30 13:53:31 by selee             #+#    #+#             */
-/*   Updated: 2020/12/11 15:57:55 by selee            ###   ########lyon.fr   */
+/*   Updated: 2020/12/14 17:07:16 by selee            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,19 +36,17 @@ char		*ft_strtrim(char const *s1, char const *set)
 	size_t	j;
 	size_t	new_index;
 
+	if (!s1 || !set)
+		return (NULL);
 	index = 0;
 	new_index = 0;
 	len = ft_strlen(s1);
 	j = len;
-	if (!s1 || !set)
-		return (NULL);
-	while (s1 && ft_is_in_set(s1[index], set))
+	while (ft_is_in_set(s1[index], set))
 		index++;
-	while (s1 && ft_is_in_set(s1[j - 1], set))
+	while (j >= index && ft_is_in_set(s1[j - 1], set))
 		j--;
-	if (j > index)
-		len = j;
-	if (!(new_str = (char *)malloc(sizeof(char) * (len - index + 1))))
+	if (!(new_str = (char *)malloc(sizeof(char) * (j - index + 1))))
 		return (NULL);
 	while (index < j)
 		new_str[new_index++] = s1[index++];

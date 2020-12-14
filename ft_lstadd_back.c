@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seoyounglee <seoyounglee@student.42lyon    +#+  +:+       +#+        */
+/*   By: selee <selee@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/11 18:10:15 by selee             #+#    #+#             */
-/*   Updated: 2020/12/13 22:23:29 by seoyounglee      ###   ########lyon.fr   */
+/*   Updated: 2020/12/14 10:38:45 by selee            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 

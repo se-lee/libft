@@ -6,7 +6,7 @@
 /*   By: selee <selee@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/11 19:18:57 by selee             #+#    #+#             */
-/*   Updated: 2020/12/11 19:49:02 by selee            ###   ########lyon.fr   */
+/*   Updated: 2020/12/14 10:32:16 by selee            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	ft_lstclear(t_list **lst, void (*del)(void*))
 	t_list	*curr_elem;
 	t_list	*next_elem;
 
+	if (!lst || !del)
+		return ;
 	curr_elem = *lst;
 	while (curr_elem)
 	{
