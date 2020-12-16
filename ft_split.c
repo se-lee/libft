@@ -6,7 +6,7 @@
 /*   By: selee <selee@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 09:15:04 by selee             #+#    #+#             */
-/*   Updated: 2020/12/15 18:13:20 by selee            ###   ########lyon.fr   */
+/*   Updated: 2020/12/16 13:44:54 by selee            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,27 +40,6 @@ static int		ft_count_words(const char *string, char sep)
 	}
 	return (count);
 }
-
-/*
-static int		ft_count_words(const char *string, char sep)
-{
-	int		count;
-	int		index;
-
-	count = 0;
-	index = 0;
-	if (string == 0 || sep == 0)
-		return (0);
-	while (string[index])
-	{
-		if (string[index] != sep && (string[index + 1] == sep ||
-				string[index + 1] == '\0'))
-			count++;
-		index++;
-	}
-	return (count);
-}
-*/
 
 static char		*ft_read_word(const char **string, char sep)
 {
@@ -134,13 +113,3 @@ char			**ft_split(const char *string, char sep)
 	words[word_index] = NULL;
 	return (words);
 }
-
-/*
-#include <stdio.h>
-
-int		main()
-{
-	printf("%d\n", ft_count_words("  ----this---is----haaa---gooooo   --  ---  ", '-'));
-	return (0);
-}
-*/
