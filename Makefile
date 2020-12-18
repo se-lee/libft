@@ -6,9 +6,11 @@
 #    By: selee <selee@student.42lyon.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/14 13:48:53 by selee             #+#    #+#              #
-#    Updated: 2020/12/14 19:27:02 by selee            ###   ########lyon.fr    #
+#    Updated: 2020/12/15 18:15:53 by selee            ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
+
+HEADER	= libft.h
 
 SRCS	= ft_bzero.c ft_calloc.c ft_isalnum.c\
 		  ft_isalpha.c ft_isascii.c ft_isdigit.c\
@@ -35,11 +37,11 @@ NAME	= libft.a
 
 CFLAGS	= -Wall -Wextra -Werror
 
-.c.o: libft.
+%.o: %.c $(HEADER)
 	$(CC) $(CFLAGS) -c $< -o $@
 
-$(NAME): $(OBJS)
-	$(AR) rcs $(NAME) $(OBJS)
+$(NAME): $(OBJS) $(HEADER)
+	$(AR) rcs $(NAME) $?
 
 all: $(NAME)
 

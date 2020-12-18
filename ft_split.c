@@ -6,7 +6,7 @@
 /*   By: selee <selee@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 09:15:04 by selee             #+#    #+#             */
-/*   Updated: 2020/12/14 16:05:54 by selee            ###   ########lyon.fr   */
+/*   Updated: 2020/12/16 13:44:54 by selee            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ static int		ft_count_words(const char *string, char sep)
 	index = 0;
 	count = 0;
 	in_a_word = false;
-	while (string[++index] != '\0')
+	while (string[index] != '\0')
 	{
-		c = string[index];
+		c = string[index++];
 		if (in_a_word)
 		{
 			if (c == sep)
