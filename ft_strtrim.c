@@ -6,7 +6,7 @@
 /*   By: selee <selee@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/30 13:53:31 by selee             #+#    #+#             */
-/*   Updated: 2020/12/14 17:07:16 by selee            ###   ########lyon.fr   */
+/*   Updated: 2021/05/03 13:08:43 by selee            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int	ft_is_in_set(char chr, char const *set)
 	return (0);
 }
 
-char		*ft_strtrim(char const *s1, char const *set)
+char	*ft_strtrim(char const *s1, char const *set)
 {
 	char	*new_str;
 	size_t	index;
@@ -46,7 +46,8 @@ char		*ft_strtrim(char const *s1, char const *set)
 		index++;
 	while (j >= index && ft_is_in_set(s1[j - 1], set))
 		j--;
-	if (!(new_str = (char *)malloc(sizeof(char) * (j - index + 1))))
+	new_str = (char *)malloc(sizeof(char) * (j - index + 1));
+	if (!new_str)
 		return (NULL);
 	while (index < j)
 		new_str[new_index++] = s1[index++];

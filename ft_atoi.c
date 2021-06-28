@@ -6,7 +6,7 @@
 /*   By: selee <selee@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 15:59:15 by selee             #+#    #+#             */
-/*   Updated: 2020/12/14 17:28:11 by selee            ###   ########lyon.fr   */
+/*   Updated: 2021/05/03 12:57:25 by selee            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <limits.h>
 #include <stdint.h>
 
-int		ft_atoi(const char *str)
+int	ft_atoi(const char *str)
 {
 	__int128_t	nbr;
 	int			sign;
@@ -36,7 +36,7 @@ int		ft_atoi(const char *str)
 		nbr = nbr * 10 + (str[i] - '0');
 		if (sign == 1 && nbr > LONG_MAX)
 			return ((int)LONG_MAX);
-		if (sign == -1 && -nbr < LONG_MIN)
+		if (sign == -1 && - nbr < LONG_MIN)
 			return ((int)LONG_MIN);
 		i++;
 	}

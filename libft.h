@@ -6,7 +6,7 @@
 /*   By: selee <selee@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 15:37:43 by selee             #+#    #+#             */
-/*   Updated: 2020/12/14 11:16:03 by selee            ###   ########lyon.fr   */
+/*   Updated: 2021/05/03 13:24:49 by selee            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,10 @@ char			*ft_strchr(const char *s, int c);
 char			*ft_strdup(const char *s1);
 size_t			ft_strlcat(char *dst, const char *src, size_t dstsize);
 size_t			ft_strlcpy(char *dst, const char *src, size_t destsize);
-size_t			ft_strlen(const char *s);
+int				ft_strlen(const char *s);
 int				ft_strncmp(const char *s1, const char *s2, size_t n);
 char			*ft_strnstr(const char *haystack, const char *needle,
-							size_t len);
+					size_t len);
 char			*ft_strrchr(const char *s, int c);
 int				ft_tolower(int c);
 int				ft_toupper(int c);
@@ -53,8 +53,11 @@ char			*ft_substr(char const *s, unsigned int start, size_t len);
 char			*ft_itoa(int n);
 char			*ft_strtrim(char const *s1, char const *set);
 char			*ft_strmapi(char const *s, char (*f)(unsigned int, char));
+int				ft_atoi_base(char *str, char *base);
+char			*ft_itoa_base(int n, const char *base, int base_len);
+char			*ft_utoa_base(unsigned long int n, const char *base);
 
-typedef struct	s_list
+typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;

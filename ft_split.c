@@ -6,13 +6,13 @@
 /*   By: selee <selee@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 09:15:04 by selee             #+#    #+#             */
-/*   Updated: 2020/12/16 13:44:54 by selee            ###   ########lyon.fr   */
+/*   Updated: 2021/05/03 13:07:32 by selee            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int		ft_count_words(const char *string, char sep)
+static int	ft_count_words(const char *string, char sep)
 {
 	int		count;
 	int		index;
@@ -41,7 +41,7 @@ static int		ft_count_words(const char *string, char sep)
 	return (count);
 }
 
-static char		*ft_read_word(const char **string, char sep)
+static char	*ft_read_word(const char **string, char sep)
 {
 	char		*result;
 	int			len;
@@ -63,7 +63,7 @@ static char		*ft_read_word(const char **string, char sep)
 	return (result);
 }
 
-static void		ft_skip_separators(const char **string, char sep)
+static void	ft_skip_separators(const char **string, char sep)
 {
 	const char	*cursor;
 
@@ -73,7 +73,7 @@ static void		ft_skip_separators(const char **string, char sep)
 	*string = cursor;
 }
 
-static void		ft_cleanup(char **words, int up_to)
+static void	ft_cleanup(char **words, int up_to)
 {
 	int		word_index;
 
@@ -86,7 +86,7 @@ static void		ft_cleanup(char **words, int up_to)
 	free(words);
 }
 
-char			**ft_split(const char *string, char sep)
+char	**ft_split(const char *string, char sep)
 {
 	char		**words;
 	int			word_index;
@@ -95,20 +95,21 @@ char			**ft_split(const char *string, char sep)
 	const char	*cursor;
 
 	word_count = ft_count_words(string, sep);
-	if (!(words = malloc((word_count + 1) * sizeof(char*))))
+	words = malloc((word_count + 1) * sizeof(char *));
+	if (!words)
 		return (NULL);
 	word_index = 0;
 	cursor = &string[0];
 	while (word_index < word_count)
 	{
 		ft_skip_separators(&cursor, sep);
-		if (!(new_word = ft_read_word(&cursor, sep)))
+		new_word = ft_read_word(&cursor, sep);
+		if (!new_word)
 		{
 			ft_cleanup(words, word_index);
 			return (NULL);
 		}
-		words[word_index] = new_word;
-		word_index++;
+		words[word_index++] = new_word;
 	}
 	words[word_index] = NULL;
 	return (words);

@@ -6,7 +6,7 @@
 /*   By: selee <selee@student.42lyon.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/26 16:07:40 by selee             #+#    #+#             */
-/*   Updated: 2020/12/11 15:44:32 by selee            ###   ########lyon.fr   */
+/*   Updated: 2021/06/22 12:19:55 by selee            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		new_len = 0;
 	if (len < new_len)
 		new_len = len;
-	if (!(ptr = (char *)malloc(sizeof(char) * (new_len + 1))))
+	ptr = (char *)malloc(sizeof(char) * (new_len + 1));
+	if (!ptr)
 		return (NULL);
 	while (i < new_len)
 	{
