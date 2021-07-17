@@ -7,11 +7,6 @@ static unsigned int	ft_len_nbr(long unsigned int n, unsigned int base_len)
 
 	nbr = (long unsigned)n;
 	i = 1;
-	if (nbr < 0)
-	{
-		nbr *= -1;
-		i++;
-	}
 	while (nbr >= base_len)
 	{
 		nbr /= base_len;
